@@ -1,0 +1,114 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  --color-background: #0f131c;
+  --color-surface: #0f131c;
+  --color-surface-lowest: #0a0e17;
+  --color-surface-low: #181b25;
+  --color-surface-container: #1c1f29;
+  --color-surface-high: #262a34;
+  --color-surface-highest: #31353f;
+  --color-surface-bright: #353943;
+
+  --color-on-surface: #dfe2ef;
+  --color-on-surface-variant: #bcc9cd;
+  --color-outline: #869397;
+  --color-outline-variant: #3d494c;
+
+  --color-primary: #4cd7f6;
+  --color-primary-container: #06b6d4;
+  --color-on-primary: #003640;
+  --color-on-primary-container: #001f26;
+
+  --color-secondary: #ffb95f;
+  --color-secondary-container: #ee9800;
+  --color-on-secondary: #472a00;
+
+  --color-tertiary: #4edea3;
+  --color-tertiary-container: #1bbd85;
+  --color-on-tertiary: #003824;
+
+  --color-error: #ffb4ab;
+  --color-error-container: #93000a;
+  --color-on-error-container: #ffdad6;
+}
+
+@layer base {
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: #0f131c;
+    color: #dfe2ef;
+    font-family: var(--font-sans);
+    overscroll-behavior: none;
+  }
+
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* Precision low-profile scrollbars for Obsidian Cyber Command density */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0e17;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #262a34;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3d494c;
+}
+
+@keyframes confetti-fall {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(var(--tx, 40px), var(--ty, 180px), 0) rotate(var(--rot, 320deg));
+    opacity: 0;
+  }
+}
+
+.confetti-particle {
+  animation: confetti-fall 950ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Student Accessibility Preferences (Academic Profile -> Root Shell) */
+[data-reduced-motion="true"] *,
+[data-reduced-motion="true"] *::before,
+[data-reduced-motion="true"] *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+}
+
+[data-reduced-motion="true"] .confetti-particle {
+  display: none !important;
+}
+
+[data-high-contrast="true"] {
+  --color-on-surface: #ffffff;
+  --color-on-surface-variant: #e6eff2;
+  --color-outline: #b4c2c6;
+  --color-outline-variant: #5e6e73;
+}
+
+[data-comfortable-spacing="true"] {
+  line-height: 1.65;
+  letter-spacing: 0.012em;
+}
+
